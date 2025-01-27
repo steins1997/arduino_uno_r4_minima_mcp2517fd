@@ -1,0 +1,1 @@
+# arduino_uno_r4_minima_mcp2517fd
