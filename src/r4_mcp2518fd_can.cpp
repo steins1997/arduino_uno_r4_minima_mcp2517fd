@@ -7,7 +7,7 @@
  * MIT License
  * 
  * Copyright (c) 2018 Longan Labs
- * Copyright (c) 2025 Shinkai Digital Transport Co., Ltd.
+ * Copyright (c) 2025 OSAKA NDS CO., LTD.
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
