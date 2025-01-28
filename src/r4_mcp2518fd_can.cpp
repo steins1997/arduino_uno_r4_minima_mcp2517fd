@@ -2,7 +2,7 @@
  * This software is based on an original work by Longan Labs, licensed under the MIT License.
  * The original source can be found at https://github.com/Longan-Labs/Longan_CANFD.
  *
- * Modifications and enhancements made by Shinkai Digital Transport Co., Ltd. in 2025.
+ * Modifications and enhancements made by OSAKA NDS CO., LTD. in 2025.
  *
  * MIT License
  * 
