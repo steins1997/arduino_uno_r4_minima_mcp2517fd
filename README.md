@@ -1,4 +1,3 @@
-Arduino CAN FD Library
 <概要>
 このライブラリは、Arduino UNO R4 MinimaとLongan Labs製CAN FD Shield for Arduinoを使用して、PCからCAN2.0およびCAN FDの通信を行うためのものです。
 
