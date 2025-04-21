@@ -10,12 +10,12 @@
 /**************************************************************************************
  Version
  *************************************************************************************/
-#define FW_VER_INF "VER.00-03 (2025-01-28)"
+#define FW_VER_INF "VER.00-03 (2025-04-21)"
 
 /**************************************************************************************
  Macros
  *************************************************************************************/
-#define ARRAY_LENGTH(array) (sizeof(array)/sizeof(array[0]))
+#define ARRAY_LENGTH(array) (sizeof(array) / sizeof(array[0]))
 
 /**************************************************************************************
  Arduino Config
@@ -35,80 +35,80 @@
  Typedef for CAN
  *************************************************************************************/
 //! CAN operation enum
-typedef enum{
+typedef enum {
   CAN_OPERATION_CAN20 = 0,
   CAN_OPERATION_CANFD
-}can_operation_t;
+} can_operation_t;
 
 //! CAN operation type
-typedef struct{
-  const char* name;
+typedef struct {
+  const char *name;
   can_operation_t operation;
-  byte id;             
-}CAN_OPERATION_TABLE_T;
+  byte id;
+} CAN_OPERATION_TABLE_T;
 
 //! CAN2.0 config type
-typedef struct{
+typedef struct {
   uint32_t bitrate;
   byte mode;
-}can20_config_t;
+} can20_config_t;
 
 //! CANFD config type
-typedef struct{
+typedef struct {
   uint32_t bitrate;
   byte mode;
-}canfd_config_t;
+} canfd_config_t;
 
 //! CAN2.0 bitrate config tabel
-typedef struct{
-  const char* name;   // 設定名
-  uint32_t bitrate;   // スピード設定（通常は通信速度）
-  byte id;            // キーとしての役割
-}CAN20_BITRATE_CONFIG_TABLE_T;
+typedef struct {
+  const char *name;  // 設定名
+  uint32_t bitrate;  // スピード設定（通常は通信速度）
+  byte id;           // キーとしての役割
+} CAN20_BITRATE_CONFIG_TABLE_T;
 
 //! CANFD bitrate config tabel
 typedef struct {
-  const char* name;  // 設定名
+  const char *name;  // 設定名
   uint32_t bitrate;  // スピード設定（通常は通信速度）
   byte id;           // キーとしての役割
-}CANFD_BITRATE_CONFIG_TABLE_T;
+} CANFD_BITRATE_CONFIG_TABLE_T;
 
 //! CHIP mode config tabel
 typedef struct {
-  const char* name;  // 設定名
+  const char *name;  // 設定名
   byte mode;         // モード設定
   byte id;           // キーとしての役割
-}CHIP_MODE_CONFIG_TABLE_T;
+} CHIP_MODE_CONFIG_TABLE_T;
 
 /**************************************************************************************
  Table for CAN
  *************************************************************************************/
-const CAN_OPERATION_TABLE_T CAN_OPERATION_TABLE[]={
-  {"CAN2.0", CAN_OPERATION_CAN20, 0x01},
-  {"CANFD",  CAN_OPERATION_CANFD, 0x02}
+const CAN_OPERATION_TABLE_T CAN_OPERATION_TABLE[] = {
+  { "CAN2.0", CAN_OPERATION_CAN20, 0x01 },
+  { "CANFD", CAN_OPERATION_CANFD, 0x02 }
 };
 
 //! CAN2.0 BITRARE CONFIG TABLE
-const CAN20_BITRATE_CONFIG_TABLE_T CAN20_BITRATE_CONFIG_TABLE[]={
-  {"5KBPS",   CAN20_5KBPS,    0x01},
-  {"10KBPS",  CAN20_10KBPS,   0x02},
-  {"20KBPS",  CAN20_20KBPS,   0x03},
-  {"25KBPS",  CAN20_25KBPS,   0x04},
-  {"31K25BPS",CAN20_31K25BPS, 0x05},
-  {"33KBPS",  CAN20_33KBPS,   0x06},
-  {"40KBPS",  CAN20_40KBPS,   0x07},
-  {"50KBPS",  CAN20_50KBPS,   0x08},
-  {"80KBPS",  CAN20_80KBPS,   0x09},
-  {"83K3BPS", CAN20_83K3BPS,  0x0A},
-  {"95KBPS",  CAN20_95KBPS,   0x0B},
-  {"100KBPS", CAN20_100KBPS,  0x0C},
-  {"125KBPS", CAN20_125KBPS,  0x0D},
-  {"200KBPS", CAN20_200KBPS,  0x0E},
-  {"250KBPS", CAN20_250KBPS,  0x0F},
-  {"500KBPS", CAN20_500KBPS,  0x10},
-  {"666KBPS", CAN20_666KBPS,  0x11},
-  {"800KBPS", CAN20_800KBPS,  0x12},
-  {"1000KBPS",CAN20_1000KBPS, 0x13}
+const CAN20_BITRATE_CONFIG_TABLE_T CAN20_BITRATE_CONFIG_TABLE[] = {
+  { "5KBPS", CAN20_5KBPS, 0x01 },
+  { "10KBPS", CAN20_10KBPS, 0x02 },
+  { "20KBPS", CAN20_20KBPS, 0x03 },
+  { "25KBPS", CAN20_25KBPS, 0x04 },
+  { "31K25BPS", CAN20_31K25BPS, 0x05 },
+  { "33KBPS", CAN20_33KBPS, 0x06 },
+  { "40KBPS", CAN20_40KBPS, 0x07 },
+  { "50KBPS", CAN20_50KBPS, 0x08 },
+  { "80KBPS", CAN20_80KBPS, 0x09 },
+  { "83K3BPS", CAN20_83K3BPS, 0x0A },
+  { "95KBPS", CAN20_95KBPS, 0x0B },
+  { "100KBPS", CAN20_100KBPS, 0x0C },
+  { "125KBPS", CAN20_125KBPS, 0x0D },
+  { "200KBPS", CAN20_200KBPS, 0x0E },
+  { "250KBPS", CAN20_250KBPS, 0x0F },
+  { "500KBPS", CAN20_500KBPS, 0x10 },
+  { "666KBPS", CAN20_666KBPS, 0x11 },
+  { "800KBPS", CAN20_800KBPS, 0x12 },
+  { "1000KBPS", CAN20_1000KBPS, 0x13 }
 };
 
 //! CANFD BITRATE CONFIG TABLE
@@ -116,85 +116,85 @@ const CANFD_BITRATE_CONFIG_TABLE_T CANFD_BITRATE_CONFIG_TABLE[] = {
   { "125K500K", CAN_125K_500K, 0x01 },
   { "250K500K", CAN_250K_500K, 0x02 },
   { "250K750K", CAN_250K_750K, 0x03 },
-  { "250K1M",   CAN_250K_1M,   0x04 },
-  { "250K1M5",  CAN_250K_1M5,  0x05 },
-  { "250K2M",   CAN_250K_2M,   0x06 },
-  { "250K3M",   CAN_250K_3M,   0x07 },
-  { "250K4M",   CAN_250K_4M,   0x08 },
-  { "500K1M",   CAN_500K_1M,   0x09 },
-  { "500K2M",   CAN_500K_2M,   0x0A },
-  { "500K3M",   CAN_500K_3M,   0x0B },
-  { "500K4M",   CAN_500K_4M,   0x0C },
-  { "500K5M",   CAN_500K_5M,   0x0D },
-  { "500K6M5",  CAN_500K_6M5,  0x0E },
-  { "500K8M",   CAN_500K_8M,   0x0F },
-  { "500K10M",  CAN_500K_10M,  0x10 },
-  { "1000K4M",  CAN_1000K_4M,  0x11 },
-  { "1000K8M",  CAN_1000K_8M,  0x12 }
+  { "250K1M", CAN_250K_1M, 0x04 },
+  { "250K1M5", CAN_250K_1M5, 0x05 },
+  { "250K2M", CAN_250K_2M, 0x06 },
+  { "250K3M", CAN_250K_3M, 0x07 },
+  { "250K4M", CAN_250K_4M, 0x08 },
+  { "500K1M", CAN_500K_1M, 0x09 },
+  { "500K2M", CAN_500K_2M, 0x0A },
+  { "500K3M", CAN_500K_3M, 0x0B },
+  { "500K4M", CAN_500K_4M, 0x0C },
+  { "500K5M", CAN_500K_5M, 0x0D },
+  { "500K6M5", CAN_500K_6M5, 0x0E },
+  { "500K8M", CAN_500K_8M, 0x0F },
+  { "500K10M", CAN_500K_10M, 0x10 },
+  { "1000K4M", CAN_1000K_4M, 0x11 },
+  { "1000K8M", CAN_1000K_8M, 0x12 }
 };
 
 //! CHIP MODE CONFIG TABLE
 const CHIP_MODE_CONFIG_TABLE_T CAN20_CHIP_MODE_CONFIG_TABLE[] = {
-    { "NORMAL_MODE",            CAN_NORMAL_MODE,            0x01 },//CANFDとCAN2.0の両対応。CAN2.0の通信速度で設定すると送信できない
-    { "SLEEP_MODE",             CAN_SLEEP_MODE,             0x02 },
-    { "INTERNAL_LOOPBACK_MODE", CAN_INTERNAL_LOOPBACK_MODE, 0x03 },
-    { "LISTEN_ONLY_MODE",       CAN_LISTEN_ONLY_MODE,       0x04 },
-    { "CONFIGURATION_MODE",     CAN_CONFIGURATION_MODE,     0x05 },
-    { "EXTERNAL_LOOPBACK_MODE", CAN_EXTERNAL_LOOPBACK_MODE, 0x06 },
-    { "CLASSIC_MODE",           CAN_CLASSIC_MODE,           0x07 },//CAN2.0のみ対応。CAN2.0で動作させるときは、このモードに入れる
-    { "RESTRICTED_MODE",        CAN_RESTRICTED_MODE,        0x08 },
-    { "INVALID_MODE",           CAN_INVALID_MODE,           0x09 }
+  { "NORMAL_MODE", CAN_NORMAL_MODE, 0x01 },  //CANFDとCAN2.0の両対応。CAN2.0の通信速度で設定すると送信できない
+  { "SLEEP_MODE", CAN_SLEEP_MODE, 0x02 },
+  { "INTERNAL_LOOPBACK_MODE", CAN_INTERNAL_LOOPBACK_MODE, 0x03 },
+  { "LISTEN_ONLY_MODE", CAN_LISTEN_ONLY_MODE, 0x04 },
+  { "CONFIGURATION_MODE", CAN_CONFIGURATION_MODE, 0x05 },
+  { "EXTERNAL_LOOPBACK_MODE", CAN_EXTERNAL_LOOPBACK_MODE, 0x06 },
+  { "CLASSIC_MODE", CAN_CLASSIC_MODE, 0x07 },  //CAN2.0のみ対応。CAN2.0で動作させるときは、このモードに入れる
+  { "RESTRICTED_MODE", CAN_RESTRICTED_MODE, 0x08 },
+  { "INVALID_MODE", CAN_INVALID_MODE, 0x09 }
 };
 
 //! CHIP MODE CONFIG TABLE
 const CHIP_MODE_CONFIG_TABLE_T CANFD_CHIP_MODE_CONFIG_TABLE[] = {
-    { "NORMAL_MODE",            CAN_NORMAL_MODE,            0x01 },//CANFDとCAN2.0の両対応。CAN2.0の通信速度で設定すると送信できない
-    { "SLEEP_MODE",             CAN_SLEEP_MODE,             0x02 },
-    { "INTERNAL_LOOPBACK_MODE", CAN_INTERNAL_LOOPBACK_MODE, 0x03 },
-    { "LISTEN_ONLY_MODE",       CAN_LISTEN_ONLY_MODE,       0x04 },
-    { "CONFIGURATION_MODE",     CAN_CONFIGURATION_MODE,     0x05 },
-    { "EXTERNAL_LOOPBACK_MODE", CAN_EXTERNAL_LOOPBACK_MODE, 0x06 },
-    { "CLASSIC_MODE",           CAN_CLASSIC_MODE,           0x07 },//CAN2.0のみ対応。CAN2.0で動作させるときは、このモードに入れる
-    { "RESTRICTED_MODE",        CAN_RESTRICTED_MODE,        0x08 },
-    { "INVALID_MODE",           CAN_INVALID_MODE,           0x09 }
+  { "NORMAL_MODE", CAN_NORMAL_MODE, 0x01 },  //CANFDとCAN2.0の両対応。CAN2.0の通信速度で設定すると送信できない
+  { "SLEEP_MODE", CAN_SLEEP_MODE, 0x02 },
+  { "INTERNAL_LOOPBACK_MODE", CAN_INTERNAL_LOOPBACK_MODE, 0x03 },
+  { "LISTEN_ONLY_MODE", CAN_LISTEN_ONLY_MODE, 0x04 },
+  { "CONFIGURATION_MODE", CAN_CONFIGURATION_MODE, 0x05 },
+  { "EXTERNAL_LOOPBACK_MODE", CAN_EXTERNAL_LOOPBACK_MODE, 0x06 },
+  { "CLASSIC_MODE", CAN_CLASSIC_MODE, 0x07 },  //CAN2.0のみ対応。CAN2.0で動作させるときは、このモードに入れる
+  { "RESTRICTED_MODE", CAN_RESTRICTED_MODE, 0x08 },
+  { "INVALID_MODE", CAN_INVALID_MODE, 0x09 }
 };
 
 /**************************************************************************************
  Declaration for EEPROM
  **************************************************************************************/
-#define EEPROM_APP_INIT_ADDR          0x00
-#define EEPROM_CAN_OPEATION_ADDR      0x02
-#define EEPROM_CAN20_BITRATE_ADDR     0x04
-#define EEPROM_CANFD_BITRATE_ADDR     0x06
-#define EEPROM_CAN20_CHIP_MODE_ADDR   0x08
-#define EEPROM_CANFD_CHIP_MODE_ADDR   0x0A
+#define EEPROM_APP_INIT_ADDR 0x00
+#define EEPROM_CAN_OPEATION_ADDR 0x02
+#define EEPROM_CAN20_BITRATE_ADDR 0x04
+#define EEPROM_CANFD_BITRATE_ADDR 0x06
+#define EEPROM_CAN20_CHIP_MODE_ADDR 0x08
+#define EEPROM_CANFD_CHIP_MODE_ADDR 0x0A
 //default value
-#define EEPROM_INIT_DONE               0x02 //Ver.00-01
-#define EEPROM_CAN_OPEATION_DEF_VAL    0x02 //CAN_OPERATION_CANFD
-#define EEPROM_CAN20_BITRATE_DEF_VAL   0x10 //CAN20_500KBPS
-#define EEPROM_CANFD_BITRATE_DEF_VAL   0x09 //CAN_500K_1M
-#define EEPROM_CAN20_CHIP_MODE_DEF_VAL 0x07 //CLASSIC_MODE
-#define EEPROM_CANFD_CHIP_MODE_DEF_VAL 0x01 //NORMAL_MODE
+#define EEPROM_INIT_DONE 0x02                //Ver.00-01
+#define EEPROM_CAN_OPEATION_DEF_VAL 0x02     //CAN_OPERATION_CANFD
+#define EEPROM_CAN20_BITRATE_DEF_VAL 0x10    //CAN20_500KBPS
+#define EEPROM_CANFD_BITRATE_DEF_VAL 0x09    //CAN_500K_1M
+#define EEPROM_CAN20_CHIP_MODE_DEF_VAL 0x07  //CLASSIC_MODE
+#define EEPROM_CANFD_CHIP_MODE_DEF_VAL 0x01  //NORMAL_MODE
 
 /**************************************************************************************
  Typedef for EEPROM
  **************************************************************************************/
 //! EEPROM address and default value
 typedef struct {
-  byte addr;  // EEPROMのアドレス
-  byte def_val; // 初期値
-}EEPROM_INIT_ENTRY_T;
+  byte addr;     // EEPROMのアドレス
+  byte def_val;  // 初期値
+} EEPROM_INIT_ENTRY_T;
 
 /**************************************************************************************
  Table for EEPROM
  **************************************************************************************/
-EEPROM_INIT_ENTRY_T EEPROM_INIT_ENTRY[]={
-  {EEPROM_APP_INIT_ADDR,        EEPROM_INIT_DONE},
-  {EEPROM_CAN_OPEATION_ADDR,    EEPROM_CAN_OPEATION_DEF_VAL},
-  {EEPROM_CAN20_BITRATE_ADDR,   EEPROM_CAN20_BITRATE_DEF_VAL},
-  {EEPROM_CANFD_BITRATE_ADDR,   EEPROM_CANFD_BITRATE_DEF_VAL},
-  {EEPROM_CAN20_CHIP_MODE_ADDR, EEPROM_CAN20_CHIP_MODE_DEF_VAL},
-  {EEPROM_CANFD_CHIP_MODE_ADDR, EEPROM_CANFD_CHIP_MODE_DEF_VAL}
+EEPROM_INIT_ENTRY_T EEPROM_INIT_ENTRY[] = {
+  { EEPROM_APP_INIT_ADDR, EEPROM_INIT_DONE },
+  { EEPROM_CAN_OPEATION_ADDR, EEPROM_CAN_OPEATION_DEF_VAL },
+  { EEPROM_CAN20_BITRATE_ADDR, EEPROM_CAN20_BITRATE_DEF_VAL },
+  { EEPROM_CANFD_BITRATE_ADDR, EEPROM_CANFD_BITRATE_DEF_VAL },
+  { EEPROM_CAN20_CHIP_MODE_ADDR, EEPROM_CAN20_CHIP_MODE_DEF_VAL },
+  { EEPROM_CANFD_CHIP_MODE_ADDR, EEPROM_CANFD_CHIP_MODE_DEF_VAL }
 };
 
 /**************************************************************************************
@@ -218,7 +218,7 @@ typedef enum {
   UART_EVENT_READ_PARA,
   UART_EVENT_MCU_RESET,
   UART_EVENT_CMD_ERROR
-}user_uart_event_t;
+} user_uart_event_t;
 //
 typedef struct {
   unsigned long id;
@@ -227,7 +227,7 @@ typedef struct {
   uint32_t bitrate;
   byte mode;
   can_operation_t operation;
-}user_uart_input_t;
+} user_uart_input_t;
 
 /**************************************************************************************
  Global value
@@ -285,7 +285,7 @@ void can20_send_data(unsigned long id, unsigned char *data, uint8_t len) {
   if (ext) {
     snprintf(buffer, sizeof(buffer), "%08lX", id);  // 拡張フォーマット用
   } else {
-    snprintf(buffer, sizeof(buffer), "%03lX", id);  // 標準フォーマット用
+    snprintf(buffer, sizeof(buffer), "%03lX", id);  // 標準フォーマット用 11 bit
   }
   Serial.print("<ID>");
   Serial.println(buffer);  // フォーマット済み文字列を出力
@@ -436,6 +436,9 @@ void canfd_init(canfd_config_t *cg) {
 void print_can_para(can_operation_t *op, can20_config_t *can20_cg, canfd_config_t *canfd_cg) {
   log_separator();
 #if 1
+  //VERSION
+  log_message("INFO", FW_VER_INF);
+
   //CAN OPERATION
   for (uint8_t i = 0; i < ARRAY_LENGTH(CAN_OPERATION_TABLE); i++) {
     if (CAN_OPERATION_TABLE[i].operation == *op) {
@@ -482,7 +485,7 @@ void print_can_para(can_operation_t *op, can20_config_t *can20_cg, canfd_config_
 typedef struct {
   char buf[150];
   int ptr;
-}uart_rx_data_t;
+} uart_rx_data_t;
 static uart_rx_data_t uart_rx_data;
 /**************************************************************************************
  Functions for UART
@@ -529,35 +532,35 @@ user_uart_event_t user_uart_event_task(user_uart_input_t *inp) {
     /* ##コマンド */
     if (second_hash_idx == 0) {
       // Check ID
-      if(!parse_can_id_data(&inp->id, before_first_hash_str)){
+      if (!parse_can_id_data(&inp->id, before_first_hash_str)) {
         log_message("ERROR", "ID error");
         return UART_EVENT_CMD_ERROR;
       }
       // Check DATA
-      if(!parse_canfd_hex_data(inp->data,input_str.substring(first_hash_index + 2), &inp->len)){
+      if (!parse_canfd_hex_data(inp->data, input_str.substring(first_hash_index + 2), &inp->len)) {
         log_message("ERROR", "DATA error");
         return UART_EVENT_CMD_ERROR;
       }
       // Check OPERATION
-      if(g_can_operation == CAN_OPERATION_CAN20){
+      if (g_can_operation == CAN_OPERATION_CAN20) {
         log_message("ERROR", "CMD error");
         return UART_EVENT_CMD_ERROR;
       }
       //log_message("INFO", "<CMD:CANFD> ID:%X, LEN:%d", inp->id, inp->len);
       return UART_EVENT_CANFD_SEND;
-    
+
     }
 
 
     /* #コマンド */
     else {
       // Check ID
-      if(!parse_can_id_data(&inp->id, before_first_hash_str)){
+      if (!parse_can_id_data(&inp->id, before_first_hash_str)) {
         log_message("ERROR", "ID error");
         return UART_EVENT_CMD_ERROR;
       }
       // Check DATA
-      if(!parse_can20_hex_data(inp->data,input_str.substring(first_hash_index + 1), &inp->len)){
+      if (!parse_can20_hex_data(inp->data, input_str.substring(first_hash_index + 1), &inp->len)) {
         log_message("ERROR", "DATA error");
         return UART_EVENT_CMD_ERROR;
       }
@@ -580,10 +583,10 @@ user_uart_event_t user_uart_event_task(user_uart_input_t *inp) {
       /* @bコマンド */
       if (cmd_str == "b") {
         for (int i = 0; i < ARRAY_LENGTH(CAN20_BITRATE_CONFIG_TABLE); i++) {
-          if(CAN20_BITRATE_CONFIG_TABLE[i].name == arg_str){
+          if (CAN20_BITRATE_CONFIG_TABLE[i].name == arg_str) {
             inp->bitrate = CAN20_BITRATE_CONFIG_TABLE[i].bitrate;
             //
-            log_message("INFO", "CAN2.0 BITRATE : %s",CAN20_BITRATE_CONFIG_TABLE[i].name);
+            log_message("INFO", "CAN2.0 BITRATE : %s", CAN20_BITRATE_CONFIG_TABLE[i].name);
             return UART_EVENT_CAN20_SETTING_BITRATE;
           }
         }
@@ -593,10 +596,10 @@ user_uart_event_t user_uart_event_task(user_uart_input_t *inp) {
       /* @fbコマンド */
       else if (cmd_str == "fb") {
         for (int i = 0; i < ARRAY_LENGTH(CANFD_BITRATE_CONFIG_TABLE); i++) {
-          if(CANFD_BITRATE_CONFIG_TABLE[i].name == arg_str){
+          if (CANFD_BITRATE_CONFIG_TABLE[i].name == arg_str) {
             inp->bitrate = CANFD_BITRATE_CONFIG_TABLE[i].bitrate;
             //
-            log_message("INFO", "CANFD BITRATE : %s",CANFD_BITRATE_CONFIG_TABLE[i].name);
+            log_message("INFO", "CANFD BITRATE : %s", CANFD_BITRATE_CONFIG_TABLE[i].name);
             return UART_EVENT_CANFD_SETTING_BITRATE;
           }
         }
@@ -605,11 +608,11 @@ user_uart_event_t user_uart_event_task(user_uart_input_t *inp) {
 
       /* @mコマンド */
       else if (cmd_str == "m") {
-        for (int i = 0; i <  ARRAY_LENGTH(CAN20_CHIP_MODE_CONFIG_TABLE); i++) {
-          if(CAN20_CHIP_MODE_CONFIG_TABLE[i].name == arg_str){
+        for (int i = 0; i < ARRAY_LENGTH(CAN20_CHIP_MODE_CONFIG_TABLE); i++) {
+          if (CAN20_CHIP_MODE_CONFIG_TABLE[i].name == arg_str) {
             inp->mode = CAN20_CHIP_MODE_CONFIG_TABLE[i].mode;
             //
-            log_message("INFO", "CAN2.0 CHIP MODE : %s",CAN20_CHIP_MODE_CONFIG_TABLE[i].name);
+            log_message("INFO", "CAN2.0 CHIP MODE : %s", CAN20_CHIP_MODE_CONFIG_TABLE[i].name);
             return UART_EVENT_CAN20_SETTING_CHIP_MODE;
           }
         }
@@ -618,11 +621,11 @@ user_uart_event_t user_uart_event_task(user_uart_input_t *inp) {
 
       /* @fmコマンド */
       else if (cmd_str == "fm") {
-        for (int i = 0; i <  ARRAY_LENGTH(CANFD_CHIP_MODE_CONFIG_TABLE); i++) {
-          if(CANFD_CHIP_MODE_CONFIG_TABLE[i].name == arg_str){
+        for (int i = 0; i < ARRAY_LENGTH(CANFD_CHIP_MODE_CONFIG_TABLE); i++) {
+          if (CANFD_CHIP_MODE_CONFIG_TABLE[i].name == arg_str) {
             inp->mode = CANFD_CHIP_MODE_CONFIG_TABLE[i].mode;
             //
-            log_message("INFO", "CANFD CHIP MODE : %s",CANFD_CHIP_MODE_CONFIG_TABLE[i].name);
+            log_message("INFO", "CANFD CHIP MODE : %s", CANFD_CHIP_MODE_CONFIG_TABLE[i].name);
             return UART_EVENT_CANFD_SETTING_CHIP_MODE;
           }
         }
@@ -631,39 +634,38 @@ user_uart_event_t user_uart_event_task(user_uart_input_t *inp) {
 
 
     /* @can2.0コマンド */
-    if(cmd_str == "can2.0"){
+    if (cmd_str == "can2.0") {
       inp->operation = CAN_OPERATION_CAN20;
       return UART_EVENT_SETTING_OPERATION;
     }
 
 
     /* @canfdコマンド */
-    if(cmd_str == "canfd"){
+    if (cmd_str == "canfd") {
       inp->operation = CAN_OPERATION_CANFD;
       return UART_EVENT_SETTING_OPERATION;
     }
 
 
     /* @pコマンド */
-    if(cmd_str == "p") {
+    if (cmd_str == "p") {
       return UART_EVENT_READ_PARA;
     }
 
     /* @rコマンド */
-    if(cmd_str == "r") {
+    if (cmd_str == "r") {
       return UART_EVENT_MCU_RESET;
     }
 
     /* @lコマンド */
-    if(cmd_str == "l") {
+    if (cmd_str == "l") {
       return UART_EVENT_LISTEN_EN;
     }
 
     /* @Lコマンド */
-    if(cmd_str == "L") {
+    if (cmd_str == "L") {
       return UART_EVENT_LISTEN_DIS;
     }
-    
   }
   /*******************************************************************/
   // CMD Error
@@ -674,11 +676,11 @@ user_uart_event_t user_uart_event_task(user_uart_input_t *inp) {
 }
 
 //
-static bool parse_can_id_data(unsigned long* id, String parse_str) {
+static bool parse_can_id_data(unsigned long *id, String parse_str) {
   // 空の文字列は数字とみなさない
   if (parse_str.length() == 0) return false;
 
-  char* endPtr;
+  char *endPtr;
   // 16進数で解析
   long value = strtol(parse_str.c_str(), &endPtr, 16);
 
@@ -691,35 +693,23 @@ static bool parse_can_id_data(unsigned long* id, String parse_str) {
   return true;
 }
 //
-static bool parse_can20_hex_data(unsigned char* data, String parse_str, uint8_t* len) {
-  int str_len = parse_str.length(); // 文字列の長さを取得
-  if (str_len == 0 || str_len > CAN20_MAX_DATA_LEN * 3 - 1) {
-    return false; // データ長チェック
+static bool parse_can20_hex_data(unsigned char *data, String parse_str, uint8_t *len) {
+  int str_len = parse_str.length();  // 文字列の長さを取得
+  if (str_len == 0 || str_len > CAN20_MAX_DATA_LEN * 2 || str_len % 2 == 1) {
+    return false;  // データ長チェック
   }
 
   int start_idx = 0;
-  int end_idx = parse_str.indexOf('.');
-  uint8_t data_index = 0; // 格納したデータのインデックス（バイト数）
+  uint8_t data_index = 0;  // 格納したデータのインデックス（バイト数）
 
-  while (end_idx != -1) {
-    if (!process_token(data + data_index, parse_str.substring(start_idx, end_idx))) {
-      return false; // トークンの処理に失敗した場合
+  while (start_idx < str_len) {
+    if (!process_token(data + data_index, parse_str.substring(start_idx, start_idx + 2))) {
+      return false;  // トークンの処理に失敗した場合
     }
-    start_idx = end_idx + 1;
-    end_idx = parse_str.indexOf('.', start_idx);
+    start_idx = start_idx + 2;
     //
-    if(data_index >= CAN20_MAX_DATA_LEN - 1){ //8byte以上はエラー
-      return false;
-    }
-    data_index++; // 次のデータ格納位置に移動
+    data_index++;  // 次のデータ格納位置に移動
   }
-
-  // 最後のトークン処理
-  if (!process_token(data + data_index, parse_str.substring(start_idx))) {
-    return false;
-  }
-  data_index++; // 最後のデータを格納
-
   // データの長さ（バイト数）を引数のlenに設定
   *len = data_index;
 
@@ -727,44 +717,47 @@ static bool parse_can20_hex_data(unsigned char* data, String parse_str, uint8_t*
 }
 
 //
-static bool parse_canfd_hex_data(unsigned char* data, String parse_str, uint8_t* len) {
-  int str_len = parse_str.length(); // 文字列の長さを取得
-  if (str_len == 0 || str_len > CANFD_MAX_DATA_LEN * 3 - 1) {
-    return false; // データ長チェック
+static bool parse_canfd_hex_data(unsigned char *data, String parse_str, uint8_t *len) {
+  const uint8_t dlc_table[] = { 12, 16, 20, 24, 32, 48, 64 };
+
+  int str_len = parse_str.length();  // 入力文字列長
+  if (str_len == 0 || str_len > CANFD_MAX_DATA_LEN * 2 || str_len % 2 == 1) {
+    return false;  // 0長、奇数長、長すぎNG
   }
 
   int start_idx = 0;
-  int end_idx = parse_str.indexOf('.');
-  uint8_t data_index = 0; // 格納したデータのインデックス（バイト数）
+  uint8_t data_index = 0;
 
-  while (end_idx != -1) {
-    if (!process_token(data + data_index, parse_str.substring(start_idx, end_idx))) {
-      return false; // トークンの処理に失敗した場合
+  while (start_idx < str_len) {
+    if (!process_token(data + data_index, parse_str.substring(start_idx, start_idx + 2))) {
+      return false;  // 2文字ずつ処理、失敗ならNG
     }
-    start_idx = end_idx + 1;
-    end_idx = parse_str.indexOf('.', start_idx);
-    //
-    if(data_index >= CANFD_MAX_DATA_LEN - 1){ //64byte以上はエラー
-      return false;
-    }
-    data_index++; // 次のデータ格納位置に移動
+    start_idx += 2;
+    data_index++;
   }
 
-  // 最後のトークン処理
-  if (!process_token(data + data_index, parse_str.substring(start_idx))) {
-    return false;
+  // 8バイト以下ならそのまま（0埋めしたければここで対応）
+  if (data_index <= 8) {
+    *len = data_index;
+    return true;
   }
-  data_index++; // 最後のデータを格納
 
-  // データの長さ（バイト数）を引数のlenに設定
-  *len = data_index;
+  // 9バイト以上：CAN FD DLCの対応範囲から最小サイズを探す
+  for (uint8_t i = 0; i < sizeof(dlc_table) / sizeof(dlc_table[0]); i++) {
+    if (data_index <= dlc_table[i]) {
+      // 足りない分は0で埋める
+      memset(data + data_index, 0x00, dlc_table[i] - data_index);
+      *len = dlc_table[i];  // 長さ（DLC換算後）を設定
+      return true;
+    }
+  }
 
-  return true;
+  return false;  // 64バイトを超えていた場合
 }
 
 // トークン処理用のヘルパー関数
-static bool process_token(unsigned char* data, String token) {
-  char* endPtr;
+static bool process_token(unsigned char *data, String token) {
+  char *endPtr;
   long value = strtol(token.c_str(), &endPtr, 16);
 
   if (endPtr == token.c_str() || *endPtr != '\0' || value < 0x00 || value > 0xFF) {
@@ -790,7 +783,7 @@ void eeprom_init(void) {
     eeprom_write_default_value();
   }
   //EEPROMのエラーチェック
-  if(!eeprom_error_check()){
+  if (!eeprom_error_check()) {
     log_message("INFO", "Writing default values to EEPROM...");
     eeprom_write_default_value();
   }
@@ -816,15 +809,11 @@ static bool eeprom_error_check(void) {
       log_message("ERROR", "EEPROM stored value is invalid");
       return false;
     }
-  }//
+  }  //
   can_operation_t dumy_op;
   uint32_t dumy_br;
   byte dumy_mode;
-  if(!eeprom_read_can_operation(&dumy_op)||
-  !eeprom_read_can20_bitrate(&dumy_br)||
-  !eeprom_read_canfd_bitrate(&dumy_br)||
-  !eeprom_read_can20_chip_mode(&dumy_mode)||
-  !eeprom_read_canfd_chip_mode(&dumy_mode)){
+  if (!eeprom_read_can_operation(&dumy_op) || !eeprom_read_can20_bitrate(&dumy_br) || !eeprom_read_canfd_bitrate(&dumy_br) || !eeprom_read_can20_chip_mode(&dumy_mode) || !eeprom_read_canfd_chip_mode(&dumy_mode)) {
     log_message("ERROR", "EEPROM stored value is invalid");
     return false;
   }
@@ -832,11 +821,11 @@ static bool eeprom_error_check(void) {
   return true;
 }
 //
-bool eeprom_read_can_operation(can_operation_t *op){
+bool eeprom_read_can_operation(can_operation_t *op) {
   byte id = EEPROM.read(EEPROM_CAN_OPEATION_ADDR);
   //
-  for(uint8_t i=0; i < ARRAY_LENGTH(CAN_OPERATION_TABLE); i++){
-    if(CAN_OPERATION_TABLE[i].id == id){
+  for (uint8_t i = 0; i < ARRAY_LENGTH(CAN_OPERATION_TABLE); i++) {
+    if (CAN_OPERATION_TABLE[i].id == id) {
       *op = CAN_OPERATION_TABLE[i].operation;
       return true;
     }
@@ -902,11 +891,11 @@ bool eeprom_read_canfd_chip_mode(byte *mode) {
 }
 
 //
-bool eeprom_write_can_operation(can_operation_t op){
+bool eeprom_write_can_operation(can_operation_t op) {
   for (int i = 0; i < ARRAY_LENGTH(CAN_OPERATION_TABLE); i++) {
     if (CAN_OPERATION_TABLE[i].operation == op) {
       EEPROM.write(EEPROM_CAN_OPEATION_ADDR, CAN_OPERATION_TABLE[i].id);
-      EEPROM.write(EEPROM_CAN_OPEATION_ADDR+1, CAN_OPERATION_TABLE[i].id);
+      EEPROM.write(EEPROM_CAN_OPEATION_ADDR + 1, CAN_OPERATION_TABLE[i].id);
       return true;
     }
   }
@@ -915,11 +904,11 @@ bool eeprom_write_can_operation(can_operation_t op){
 }
 
 //
-bool eeprom_write_can20_bitrate(uint32_t br){
+bool eeprom_write_can20_bitrate(uint32_t br) {
   for (int i = 0; i < ARRAY_LENGTH(CAN20_BITRATE_CONFIG_TABLE); i++) {
     if (CAN20_BITRATE_CONFIG_TABLE[i].bitrate == br) {
       EEPROM.write(EEPROM_CAN20_BITRATE_ADDR, CAN20_BITRATE_CONFIG_TABLE[i].id);
-      EEPROM.write(EEPROM_CAN20_BITRATE_ADDR+1, CAN20_BITRATE_CONFIG_TABLE[i].id);
+      EEPROM.write(EEPROM_CAN20_BITRATE_ADDR + 1, CAN20_BITRATE_CONFIG_TABLE[i].id);
       return true;
     }
   }
@@ -928,11 +917,11 @@ bool eeprom_write_can20_bitrate(uint32_t br){
 }
 
 //
-bool eeprom_write_canfd_bitrate(uint32_t br){
+bool eeprom_write_canfd_bitrate(uint32_t br) {
   for (int i = 0; i < ARRAY_LENGTH(CANFD_BITRATE_CONFIG_TABLE); i++) {
     if (CANFD_BITRATE_CONFIG_TABLE[i].bitrate == br) {
       EEPROM.write(EEPROM_CANFD_BITRATE_ADDR, CANFD_BITRATE_CONFIG_TABLE[i].id);
-      EEPROM.write(EEPROM_CANFD_BITRATE_ADDR+1, CANFD_BITRATE_CONFIG_TABLE[i].id);
+      EEPROM.write(EEPROM_CANFD_BITRATE_ADDR + 1, CANFD_BITRATE_CONFIG_TABLE[i].id);
       return true;
     }
   }
@@ -941,11 +930,11 @@ bool eeprom_write_canfd_bitrate(uint32_t br){
 }
 
 //
-bool eeprom_write_can20_chip_mode(byte mode){
+bool eeprom_write_can20_chip_mode(byte mode) {
   for (int i = 0; i < ARRAY_LENGTH(CAN20_CHIP_MODE_CONFIG_TABLE); i++) {
     if (CAN20_CHIP_MODE_CONFIG_TABLE[i].mode == mode) {
       EEPROM.write(EEPROM_CAN20_CHIP_MODE_ADDR, CAN20_CHIP_MODE_CONFIG_TABLE[i].id);
-      EEPROM.write(EEPROM_CAN20_CHIP_MODE_ADDR+1, CAN20_CHIP_MODE_CONFIG_TABLE[i].id);
+      EEPROM.write(EEPROM_CAN20_CHIP_MODE_ADDR + 1, CAN20_CHIP_MODE_CONFIG_TABLE[i].id);
       return true;
     }
   }
@@ -954,11 +943,11 @@ bool eeprom_write_can20_chip_mode(byte mode){
 }
 
 //
-bool eeprom_write_canfd_chip_mode(byte mode){
+bool eeprom_write_canfd_chip_mode(byte mode) {
   for (int i = 0; i < ARRAY_LENGTH(CANFD_CHIP_MODE_CONFIG_TABLE); i++) {
     if (CANFD_CHIP_MODE_CONFIG_TABLE[i].mode == mode) {
       EEPROM.write(EEPROM_CANFD_CHIP_MODE_ADDR, CANFD_CHIP_MODE_CONFIG_TABLE[i].id);
-      EEPROM.write(EEPROM_CANFD_CHIP_MODE_ADDR+1, CANFD_CHIP_MODE_CONFIG_TABLE[i].id);
+      EEPROM.write(EEPROM_CANFD_CHIP_MODE_ADDR + 1, CANFD_CHIP_MODE_CONFIG_TABLE[i].id);
       return true;
     }
   }
@@ -977,7 +966,7 @@ void log_separator(void) {
 }
 
 // ログメッセージを出力 (printf対応)
-void log_message(const char* tag, const char* fmt, ...) {
+void log_message(const char *tag, const char *fmt, ...) {
   char buf[PRINTF_BUF_SIZE];
 
   // ログフォーマットのヘッダ部分
@@ -1041,7 +1030,7 @@ void user_uart_event_handler(user_uart_event_t event, user_uart_input_t input) {
         //LISTE MODに設定
         canfd_set_chip_mode(&g_canfd_config, CAN_LISTEN_ONLY_MODE);
         canfd_init(&g_canfd_config);
-      }else{
+      } else {
         canfd_send_data(input.id, input.data, input.len);
       }
       break;
@@ -1164,7 +1153,6 @@ void setup() {
     ;  // wait for serial port to connect. Needed for native USB
   }
   delay(3000);
-  log_message("VER", FW_VER_INF);
 
   //EEPROM
   eeprom_init();
